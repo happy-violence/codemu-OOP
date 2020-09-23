@@ -4,12 +4,14 @@ class User
     private $name;
     private $surname;
     private $birthday;
+    private $age;
 
     public function __construct($name, $surname, $birthday)
     {
         $this->name = $name;
         $this->surname = $surname;
         $this->birthday = $birthday;
+        $this->age = $this->calculateAge();
     }
 
     public function getName()
@@ -27,7 +29,12 @@ class User
         return $this->birthday;
     }
 
-    public function calculateAge()
+    public function getAge()
+    {
+        return $this->age;
+    }
+
+    private function calculateAge()
     {
         $arrayBirthday = explode('-', $this->birthday);
         $currentDate = explode('-', date('Y-m-d'));
@@ -49,5 +56,4 @@ class User
     }
 }
 
-$user1 = new User('Ivan', 'Makarov', '2025-09-20');
-echo $user1->calculateAge();
+//$user1 = new User('Ivan', 'Makarov', '2000-09-20');
